@@ -384,32 +384,6 @@ https://t.me/TTTPTTTTT/36',
                   'message_id'=>$mid,
                   'text'=>"Select Account.",
                   'reply_markup'=>json_encode($keyboard)
-              ]);
-            } else {
-              $bot->answerCallbackQuery([
-							'callback_query_id'=>$update->callback_query->id,
-							'text'=>"Add Account First.",
-							'show_alert'=>1
-						]);
-            }
-          } elseif($data == 'selectFollowers'){
-            bot('sendMessage',[
-                'chat_id'=>$chatId,
-                'text'=>'قم بأرسال عدد متابعين .'  
-            ]);
-            $config['mode'] = 'selectFollowers';
-          	$config['mid'] = $mid;
-          	file_put_contents('config.json', json_encode($config));
-          } elseif($data == 'run'){
-            if(!empty($accounts)){
-            $keyboard = [];
-             foreach ($accounts as $account => $v) {
-                $keyboard['inline_keyboard'][] = [['text'=>$account,'callback_data'=>'start&'.$account]];
-              }
-              $bot->editMessageText([
-                  'chat_id'=>$chatId,
-                  'message_id'=>$mid,
-                  'text'=>"Select Account.",
                   'reply_markup'=>json_encode($keyboard)
               ]);
             } else {
